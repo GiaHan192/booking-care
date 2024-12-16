@@ -1,0 +1,7 @@
+<root>
+    <item name='org.springframework.security.config.annotation.web.builders.HttpSecurity org.springframework.security.config.annotation.web.configurers.CorsConfigurer&lt;org.springframework.security.config.annotation.web.builders.HttpSecurity&gt; cors()'>
+        <annotation name='org.jetbrains.annotations.Contract'>
+            <val name="pure" val="true"/>
+        </annotation>
+    </item>
+</root>

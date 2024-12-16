@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://127.0.0.1:3307/booking_health_care}
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    password: ${SPRING_DATASOURCE_PASSWORD:123456}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+    servlet:
+      multipart:
+        max-file-size: 10MB
+  mail:
+    host: ${SPRING_MAIL_HOST:smtp.gmail.com}
+    port: ${SPRING_MAIL_PORT:587}
+    username: ${SPRING_MAIL_USERNAME:giahan1922002@gmail.com}
+    password: ${SPRING_MAIL_PASSWORD:bvsu eepx fqiv vjcn}
+    properties:
+      mail:
+        smtp:
+          auth: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH:true}
+          starttls:
+            enable: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE:true}
+            required: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_REQUIRED:true}
+          connectiontimeout: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_CONNECTIONTIMEOUT:5000}
+          timeout: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_TIMEOUT:3000}
+          writetimeout: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_WRITETIMEOUT:5000}
+
+jwt:
+  privateKey: ${JWT_PRIVATEKEY:YOpwYOb8kB04/1U5AUY7EsA7NXdHH8PQLwW/t/280idMbD2RUd+Mrzz7incpwSluLrCUadgo82GpSPUxeyIkXA==}
+  expiration: ${JWT_EXPIRATION:36000} # 10 hours
+  defaultPassword: ${JWT_DEFAULTPASSWORD:123@456}
+
+fileUpload:
+  rootPath: ${FILEUPLOAD_ROOTPATH:/uploads}
+
+# Optional server port configuration (uncomment if needed)
+# server:
+#   port: 8081

@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.1
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456789
+      MYSQL_DATABASE: booking_health_care
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: java_app
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql_db:3306/booking_health_care
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 123456789
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create
+      SPRING_MAIL_HOST: smtp.gmail.com
+      SPRING_MAIL_PORT: 587
+      SPRING_MAIL_USERNAME: giahan1922002@gmail.com
+      SPRING_MAIL_PASSWORD: bvsu eepx fqiv vjcn
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH: true
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE: true
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_REQUIRED: true
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_CONNECTIONTIMEOUT: 5000
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_TIMEOUT: 3000
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_WRITETIMEOUT: 5000
+      JWT_PRIVATEKEY: YOpwYOb8kB04/1U5AUY7EsA7NXdHH8PQLwW/t/280idMbD2RUd+Mrzz7incpwSluLrCUadgo82GpSPUxeyIkXA==
+      JWT_EXPIRATION: 36000
+      JWT_DEFAULTPASSWORD: 123@456
+      FILEUPLOAD_ROOTPATH: /uploads
+    ports:
+      - "8080:8080"
+    volumes:
+      - uploads:/uploads
+
+volumes:
+  mysql_data:
+    driver: local
+  uploads:
+    driver: local
